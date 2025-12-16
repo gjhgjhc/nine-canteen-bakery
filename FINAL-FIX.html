@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九食堂面包店 - 最终修复版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FFD93D 0%, #FFB347 100%);
+            min-height: 100vh;
+            padding: 10px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #FFD93D;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 16px;
+            color: #FF6B6B;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .buy-button {
+            width: 100%;
+            padding: 12px;
+            background: #FFD93D;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            min-height: 44px;
+        }
+
+        .buy-button:hover {
+            background: #FFB347;
+        }
+
+        .test-info {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🥐 九食堂面包店</h1>
+        
+        <div class="test-info">
+            <strong>✅ 如果你能正常缩放这个页面，说明修复成功！</strong><br>
+            测试方法：双指缩放应该可以放大缩小页面
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-name">经典贝果</div>
+                <div class="product-price">¥12</div>
+                <button class="buy-button" onclick="alert('购买功能正常！')">加入购物车</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">全麦吐司</div>
+                <div class="product-price">¥15</div>
+                <button class="buy-button" onclick="alert('购买功能正常！')">加入购物车</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-name">牛角包</div>
+                <div class="product-price">¥18</div>
+                <button class="buy-button" onclick="alert('购买功能正常！')">加入购物车</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 检查viewport设置
+        window.addEventListener('load', function() {
+            const viewport = document.querySelector('meta[name="viewport"]');
+            if (viewport) {
+                console.log('Viewport找到:', viewport.getAttribute('content'));
+            } else {
+                console.error('Viewport未找到！');
+                alert('错误：viewport标签未找到！');
+            }
+        });
+    </script>
+</body>
+</html>
