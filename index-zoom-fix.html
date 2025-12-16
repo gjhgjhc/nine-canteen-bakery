@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 移动端兼容性视口设置 - 允许所有浏览器缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!-- 针对不同浏览器的缩放兼容性 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>九食堂面包店 - 缩放兼容版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FFD93D;
+            --secondary-color: #FFB347;
+            --accent-color: #FF6B6B;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --bg-light: #FFF8E1;
+            --bg-white: #FFFFFF;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-hover: 0 4px 20px rgba(0,0,0,0.15);
+            --border-radius: 12px;
+        }
+
+        /* 通用视口兼容性修复 */
+        html {
+            font-size: 14px; /* 更小的基础字体确保内容适配 */
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #FFD93D 0%, #FFB347 100%);
+            min-height: 100vh;
+            height: 100%; /* 确保兼容性 */
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            line-height: 1.4;
+        }
+
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px; /* 减少padding节省空间 */
+            min-height: 100vh;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Header - 紧凑设计 */
+        header {
+            background: var(--bg-white);
+            padding: 10px 15px; /* 减少padding */
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            font-size: 18px; /* 减小字体 */
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mode-switcher {
+            display: flex;
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 3px;
+        }
+
+        .mode-btn {
+            padding: 6px 12px; /* 减小padding */
+            border: none;
+            background: transparent;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px; /* 减小字体 */
+            font-weight: 500;
+            min-height: 36px; /* 减小最小高度 */
+            touch-action: manipulation;
+        }
+
+        .mode-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Main Content - 垂直布局节省空间 */
+        .main-content {
+            display: flex;
+            flex-direction: column; /* 移动端垂直布局 */
+            gap: 10px;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Sidebar Navigation - 水平滚动导航 */
+        .sidebar {
+            width: 100%;
+            background: var(--bg-light);
+            padding: 8px 0;
+            border-radius: var(--border-radius);
+            margin-bottom: 10px;
+            display: flex;
+            overflow-x: auto;
+            flex-shrink: 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .nav-item {
+            padding: 8px 12px; /* 减小padding */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: none;
+            background: transparent;
+            text-align: left;
+            font-size: 13px; /* 减小字体 */
+            color: var(--text-dark);
+            min-height: 40px; /* 减小最小高度 */
+            touch-action: manipulation;
+            white-space: nowrap;
+            border-radius: 16px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .nav-item.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 15px; /* 减少padding */
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            min-height: 0; /* 确保flex正确工作 */
+        }
+
+        .content {
+            width: 100%;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Product Grid - 移动端单列紧凑布局 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* 强制单列 */
+            gap: 12px; /* 减小间距 */
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .product-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            height: 160px; /* 减小高度 */
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.02);
+        }
+
+        .product-info {
+            padding: 12px; /* 减少padding */
+        }
+
+        .product-name {
+            font-size: 16px; /* 减小字体 */
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        .product-description {
+            font-size: 13px; /* 减小字体 */
+            color: var(--text-light);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            font-size: 18px; /* 减小字体 */
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .product-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .flavor-selector {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .flavor-label {
+            font-size: 13px; /* 减小字体 */
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .flavor-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .flavor-option {
+            padding: 6px 10px; /* 减小padding */
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            background: var(--bg-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px; /* 减小字体 */
+            min-height: 36px; /* 减小最小高度 */
+            touch-action: manipulation;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flavor-option:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-light);
+        }
+
+        .flavor-option.selected {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .quantity-btn {
+            width: 30px; /* 减小尺寸 */
+            height: 30px;
+            border: 2px solid var(--primary-color);
+            background: var(--bg-white);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            min-height: 36px; /* 减小最小高度 */
+            min-width: 36px;
+            touch-action: manipulation;
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .quantity-input {
+            width: 50px; /* 减小宽度 */
+            height: 32px; /* 减小高度 */
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+            padding: 0;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 10px; /* 减小padding */
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px; /* 减小字体 */
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 44px; /* 保持触摸友好 */
+            touch-action: manipulation;
+        }
+
+        .add-to-cart:hover {
+            background: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+
+        /* 标题 */
+        h2 {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-size: 20px; /* 减小字体 */
+        }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 30px 15px; /* 减少padding */
+            color: var(--text-light);
+        }
+
+        .empty-icon {
+            font-size: 36px; /* 减小图标 */
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+
+        .empty-text {
+            font-size: 15px; /* 减小字体 */
+            margin-bottom: 6px;
+        }
+
+        .empty-subtext {
+            font-size: 13px; /* 减小字体 */
+            opacity: 0.7;
+        }
+
+        /* 桌面端恢复多列布局 */
+        @media (min-width: 769px) {
+            .main-content {
+                flex-direction: row;
+                gap: 20px;
+            }
+            
+            .sidebar {
+                width: 250px;
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            .nav-item {
+                white-space: normal;
+                padding: 15px 20px;
+                font-size: 15px;
+                text-align: left;
+                border-radius: 0;
+            }
+            
+            main {
+                padding: 20px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            .product-image-container {
+                height: 250px;
+            }
+            
+            .product-info {
+                padding: 15px;
+            }
+            
+            .product-name {
+                font-size: 18px;
+            }
+            
+            .product-description {
+                font-size: 14px;
+            }
+            
+            .product-price {
+                font-size: 20px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* 小屏幕进一步优化 */
+        @media (max-width: 480px) {
+            .app-container {
+                padding: 5px;
+            }
+            
+            header {
+                padding: 8px 12px;
+            }
+            
+            .logo {
+                font-size: 16px;
+            }
+            
+            main {
+                padding: 10px;
+            }
+            
+            .product-grid {
+                gap: 8px;
+            }
+            
+            .product-image-container {
+                height: 140px;
+            }
+            
+            .product-info {
+                padding: 10px;
+            }
+            
+            .product-name {
+                font-size: 15px;
+            }
+            
+            .product-description {
+                font-size: 12px;
+            }
+            
+            .product-price {
+                font-size: 16px;
+            }
+        }
+
+        /* 超小屏幕 */
+        @media (max-width: 360px) {
+            html {
+                font-size: 12px;
+            }
+            
+            .logo {
+                font-size: 14px;
+            }
+            
+            .mode-btn {
+                font-size: 11px;
+                padding: 5px 8px;
+                min-height: 32px;
+            }
+            
+            .nav-item {
+                font-size: 11px;
+                padding: 6px 8px;
+                min-height: 32px;
+            }
+            
+            .product-name {
+                font-size: 14px;
+            }
+            
+            .product-price {
+                font-size: 15px;
+            }
+        }
+
+        /* 通用触摸优化 */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        input, textarea, select {
+            -webkit-user-select: text;
+            user-select: text;
+            font-size: 16px; /* 防止缩放 */
+        }
+
+        button, .product-card, .flavor-option, .nav-item, .add-to-cart, .checkout-btn {
+            min-height: 44px;
+            min-width: 44px;
+            touch-action: manipulation;
+        }
+
+        /* 防止横向滚动 */
+        body, .app-container {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <span>🥐</span>
+                <span>九食堂面包店</span>
+            </div>
+            <div class="mode-switcher">
+                <button class="mode-btn active" data-mode="customer">顾客</button>
+                <button class="mode-btn" data-mode="merchant">商家</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <button class="nav-item active" data-page="products">
+                    <span>🍞</span>
+                    <span>商品列表</span>
+                </button>
+                <button class="nav-item" data-page="cart">
+                    <span>🛒</span>
+                    <span>购物车</span>
+                </button>
+                <button class="nav-item" data-page="orders">
+                    <span>📋</span>
+                    <span>订单记录</span>
+                </button>
+            </div>
+
+            <main>
+                <div class="content">
+                    <!-- 商品列表页面 -->
+                    <div class="page active" id="products-page">
+                        <h2>新鲜面包</h2>
+                        <div class="product-grid">
+                            <!-- 贝果 -->
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23f8f9fa' width='300' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23999'%3E贝果图片%3C/text%3E%3C/svg%3E" alt="贝果" class="product-image">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-name">经典贝果</h3>
+                                    <p class="product-description">传统工艺制作，口感筋道，适合做三明治</p>
+                                    <div class="product-price">¥12</div>
+                                    <div class="product-footer">
+                                        <div class="flavor-selector">
+                                            <div class="flavor-label">选择口味：</div>
+                                            <div class="flavor-options">
+                                                <div class="flavor-option selected">原味</div>
+                                                <div class="flavor-option">芝麻</div>
+                                                <div class="flavor-option">蓝莓</div>
+                                            </div>
+                                        </div>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn">-</button>
+                                            <input type="number" class="quantity-input" value="1" min="1" max="99">
+                                            <button class="quantity-btn">+</button>
+                                        </div>
+                                        <button class="add-to-cart">加入购物车</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 吐司 -->
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23f8f9fa' width='300' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23999'%3E吐司图片%3C/text%3E%3C/svg%3E" alt="吐司" class="product-image">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-name">全麦吐司</h3>
+                                    <p class="product-description">营养健康，膳食纤维丰富，早餐首选</p>
+                                    <div class="product-price">¥15</div>
+                                    <div class="product-footer">
+                                        <div class="flavor-selector">
+                                            <div class="flavor-label">选择规格：</div>
+                                            <div class="flavor-options">
+                                                <div class="flavor-option selected">标准装</div>
+                                                <div class="flavor-option">家庭装</div>
+                                            </div>
+                                        </div>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn">-</button>
+                                            <input type="number" class="quantity-input" value="1" min="1" max="99">
+                                            <button class="quantity-btn">+</button>
+                                        </div>
+                                        <button class="add-to-cart">加入购物车</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 牛角包 -->
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Crect fill='%23f8f9fa' width='300' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23999'%3E牛角包图片%3C/text%3E%3C/svg%3E" alt="牛角包" class="product-image">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-name">牛角包</h3>
+                                    <p class="product-description">层次分明，黄油香味浓郁，法式经典</p>
+                                    <div class="product-price">¥18</div>
+                                    <div class="product-footer">
+                                        <div class="flavor-selector">
+                                            <div class="flavor-label">选择口味：</div>
+                                            <div class="flavor-options">
+                                                <div class="flavor-option selected">原味</div>
+                                                <div class="flavor-option">巧克力</div>
+                                            </div>
+                                        </div>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn">-</button>
+                                            <input type="number" class="quantity-input" value="1" min="1" max="99">
+                                            <button class="quantity-btn">+</button>
+                                        </div>
+                                        <button class="add-to-cart">加入购物车</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 购物车页面 -->
+                    <div class="page" id="cart-page">
+                        <h2>购物车</h2>
+                        <div class="empty-state">
+                            <div class="empty-icon">🛒</div>
+                            <div class="empty-text">购物车是空的</div>
+                            <div class="empty-subtext">快去选择美味的面包吧</div>
+                        </div>
+                    </div>
+
+                    <!-- 订单页面 -->
+                    <div class="page" id="orders-page">
+                        <h2>订单记录</h2>
+                        <div class="empty-state">
+                            <div class="empty-icon">📋</div>
+                            <div class="empty-text">暂无订单记录</div>
+                            <div class="empty-subtext">完成第一次购买后会显示在这里</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // 基础交互逻辑
+        class BakeryApp {
+            constructor() {
+                this.cart = [];
+                this.currentPage = 'products';
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+            }
+
+            bindEvents() {
+                // 导航切换
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        const page = e.currentTarget.dataset.page;
+                        this.switchPage(page);
+                    });
+                });
+
+                // 模式切换
+                document.querySelectorAll('.mode-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                        e.currentTarget.classList.add('active');
+                    });
+                });
+
+                // 商品交互
+                document.querySelectorAll('.flavor-option').forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        const parent = e.target.closest('.flavor-options');
+                        parent.querySelectorAll('.flavor-option').forEach(opt => opt.classList.remove('selected'));
+                        e.target.classList.add('selected');
+                    });
+                });
+
+                // 数量控制
+                document.querySelectorAll('.quantity-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const input = e.target.parentElement.querySelector('.quantity-input');
+                        const currentValue = parseInt(input.value);
+                        
+                        if (e.target.textContent === '+') {
+                            input.value = Math.min(currentValue + 1, 99);
+                        } else {
+                            input.value = Math.max(currentValue - 1, 1);
+                        }
+                    });
+                });
+
+                // 加入购物车
+                document.querySelectorAll('.add-to-cart').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        this.addToCart(e.target.closest('.product-card'));
+                    });
+                });
+            }
+
+            switchPage(page) {
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelector(`[data-page="${page}"]`).classList.add('active');
+
+                document.querySelectorAll('.page').forEach(p => {
+                    p.classList.remove('active');
+                });
+                document.getElementById(`${page}-page`).classList.add('active');
+
+                this.currentPage = page;
+            }
+
+            addToCart(productCard) {
+                const name = productCard.querySelector('.product-name').textContent;
+                const priceText = productCard.querySelector('.product-price').textContent;
+                const price = parseInt(priceText.replace('¥', ''));
+                const flavor = productCard.querySelector('.flavor-option.selected').textContent;
+                const quantity = parseInt(productCard.querySelector('.quantity-input').value);
+
+                this.showNotification(`已添加 ${name} (${flavor}) x${quantity} 到购物车`);
+            }
+
+            showNotification(message) {
+                const notification = document.createElement('div');
+                notification.textContent = message;
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: var(--primary-color);
+                    color: white;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    z-index: 1000;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                `;
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+        }
+
+        // 初始化应用
+        const app = new BakeryApp();
+    </script>
+</body>
+</html>
