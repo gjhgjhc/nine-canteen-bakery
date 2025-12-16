@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -177,7 +176,7 @@
             box-shadow: var(--shadow-hover);
         }
 
-        /* 商品图片容器 */
+        /* 商品图片容器 - 优化为占满整个方框 */
         .product-image-container {
             position: relative;
             width: 100%;
@@ -187,7 +186,7 @@
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
         }
 
-        /* 商品图片 */
+        /* 商品图片 - 确保占满整个容器 */
         .product-image {
             width: 100%;
             height: 100%;
@@ -357,6 +356,223 @@
             box-shadow: none;
         }
 
+        /* 商家端样式 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .inventory-table {
+            margin-top: 20px;
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .inventory-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .inventory-table th,
+        .inventory-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .inventory-table th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .inventory-table tr:hover {
+            background: rgba(255, 107, 107, 0.05);
+        }
+
+        .settings-form {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-order-btn,
+        .save-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(255, 217, 61, 0.3);
+        }
+
+        .submit-order-btn:hover,
+        .save-btn:hover {
+            background: #FFB347;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 179, 71, 0.4);
+        }
+
+        /* 商家端订单列表样式 */
+        .orders-list {
+            margin-top: 20px;
+        }
+
+        .order-item {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .order-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .order-status {
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .order-status.pending {
+            background: rgba(255, 217, 61, 0.2);
+            color: #FFB347;
+            border: 1px solid #FFB347;
+        }
+
+        .order-status.accepted {
+            background: rgba(255, 179, 71, 0.2);
+            color: #FFA726;
+            border: 1px solid #FFA726;
+        }
+
+        .order-status.delivering {
+            background: rgba(255, 217, 61, 0.3);
+            color: #FFD93D;
+            border: 1px solid #FFD93D;
+        }
+
+        .order-status.completed {
+            background: rgba(139, 195, 74, 0.2);
+            color: #8BC34A;
+            border: 1px solid #8BC34A;
+        }
+
+        .order-details {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .order-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .small-btn {
+            padding: 6px 12px;
+            border: 1px solid var(--primary-color);
+            border-radius: 15px;
+            background: var(--bg-white);
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .small-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .delete-btn {
+            border-color: #FF5252;
+            color: #FF5252;
+        }
+
+        .delete-btn:hover {
+            background: #FF5252;
+            color: white;
+        }
+
         /* 购物车样式 */
         .cart-container {
             margin-top: 20px;
@@ -485,161 +701,103 @@
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
         }
 
-        /* 表单样式 */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .submit-order-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(255, 217, 61, 0.3);
-        }
-
-        .submit-order-btn:hover {
-            background: #FFB347;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 179, 71, 0.4);
-        }
-
-        /* 商家端样式 */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+        /* 我的订单样式 */
+        .orders-container {
             margin-top: 20px;
         }
 
-        .stat-card {
+        .user-order-item {
             background: var(--bg-white);
             border-radius: var(--border-radius);
             padding: 20px;
-            text-align: center;
+            margin-bottom: 15px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
         }
 
-        .stat-card:hover {
+        .user-order-item:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-hover);
         }
 
-        .stat-value {
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-light);
-        }
-
-        .inventory-table {
-            margin-top: 20px;
-            background: var(--bg-white);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .inventory-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .inventory-table th,
-        .inventory-table td {
-            padding: 12px 16px;
-            text-align: left;
+        .user-order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
             border-bottom: 1px solid #eee;
         }
 
-        .inventory-table th {
-            background: var(--bg-light);
+        .user-order-number {
+            font-size: 16px;
             font-weight: 600;
             color: var(--text-dark);
         }
 
-        .inventory-table tr:hover {
-            background: rgba(255, 107, 107, 0.05);
-        }
-
-        .save-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(255, 217, 61, 0.3);
-        }
-
-        .save-btn:hover {
-            background: #FFB347;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 179, 71, 0.4);
-        }
-
-        .small-btn {
+        .user-order-status {
             padding: 6px 12px;
-            border: 1px solid var(--primary-color);
             border-radius: 15px;
-            background: var(--bg-white);
-            color: var(--primary-color);
-            cursor: pointer;
             font-size: 12px;
-            transition: all 0.3s ease;
-            touch-action: manipulation;
+            font-weight: 500;
         }
 
-        .small-btn:hover {
-            background: var(--primary-color);
-            color: white;
+        .user-order-status.pending {
+            background: rgba(255, 217, 61, 0.2);
+            color: #FFB347;
+            border: 1px solid #FFB347;
         }
 
-        .delete-btn {
-            border-color: #FF5252;
-            color: #FF5252;
+        .user-order-status.processing {
+            background: rgba(255, 179, 71, 0.3);
+            color: #FFA726;
+            border: 1px solid #FFA726;
         }
 
-        .delete-btn:hover {
-            background: #FF5252;
-            color: white;
+        .user-order-status.completed {
+            background: rgba(139, 195, 74, 0.2);
+            color: #8BC34A;
+            border: 1px solid #8BC34A;
+        }
+
+        .user-order-items {
+            margin-bottom: 15px;
+        }
+
+        .user-order-item-detail {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .user-order-item-name {
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .user-order-item-price {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .user-order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .user-order-total {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .user-order-time {
+            font-size: 12px;
+            color: var(--text-light);
         }
 
         .order-notes {
@@ -673,7 +831,435 @@
             border-color: var(--primary-color);
         }
 
+        .order-notes .note-example {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* 其他样式保持不变... */
+
         /* Responsive Design */
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 5px;
+                min-height: 100vh;
+                max-width: 100%;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .main-content {
+                display: block !important;
+                width: 100%;
+            }
+
+            .sidebar {
+                width: 100%;
+                display: flex;
+                overflow-x: auto;
+                padding: 8px 0;
+                margin-bottom: 10px;
+                gap: 5px;
+            }
+
+            .nav-item {
+                white-space: nowrap;
+                padding: 8px 12px;
+                font-size: 13px;
+                min-width: fit-content;
+                flex: 1;
+            }
+
+            .content {
+                padding: 0;
+                width: 100%;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .product-card {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .product-image-container {
+                height: 120px;
+            }
+
+            .product-info {
+                padding: 10px;
+            }
+
+            .product-name {
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+
+            .product-description {
+                font-size: 13px;
+                margin-bottom: 8px;
+                min-height: 35px;
+            }
+
+            .product-price {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+
+            .add-to-cart {
+                width: 100%;
+                min-height: 44px;
+                margin-top: 8px;
+            }
+
+            .product-footer {
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch;
+            }
+
+            .flavor-options {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .flavor-option {
+                width: 100%;
+                padding: 8px;
+                text-align: center;
+            }
+
+            .order-notes {
+                margin-top: 15px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            .app-container {
+                padding: 2px;
+                width: 100%;
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 5px;
+                width: 100%;
+            }
+
+            .product-card {
+                width: 100%;
+                max-width: 100vw;
+                margin-bottom: 8px;
+                overflow: hidden;
+            }
+
+            .product-image-container {
+                height: 150px;
+                width: 100%;
+            }
+
+            .product-info {
+                padding: 8px;
+                width: 100%;
+            }
+
+            /* 移动端触摸优化 - 允许缩放但保持大触摸目标 */
+            .add-to-cart, button {
+                min-height: 44px;
+                padding: 10px 12px;
+                font-size: 14px;
+                width: 100%;
+                touch-action: manipulation;
+            }
+
+            /* 商品卡片内容优化 */
+            .product-name {
+                font-size: 16px;
+                margin-bottom: 4px;
+                line-height: 1.2;
+            }
+
+            .product-description {
+                font-size: 12px;
+                margin-bottom: 6px;
+                min-height: 30px;
+                line-height: 1.3;
+            }
+
+            .product-notes {
+                font-size: 11px;
+                padding: 6px 8px;
+                margin-bottom: 10px;
+                line-height: 1.3;
+            }
+
+            .product-price {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+
+            .product-footer {
+                flex-direction: column;
+                gap: 8px;
+                align-items: stretch;
+                width: 100%;
+            }
+
+            /* 口味选择优化 */
+            .flavor-selector {
+                margin-bottom: 10px;
+            }
+
+            .flavor-options {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                width: 100%;
+            }
+
+            .flavor-option {
+                width: 100%;
+                padding: 8px;
+                min-height: 36px;
+                font-size: 13px;
+                text-align: center;
+                border: 2px solid #ddd;
+                margin: 0;
+            }
+
+            /* 导航优化 */
+            .nav-item {
+                min-height: 40px;
+                padding: 6px 8px;
+                font-size: 12px;
+                flex: 1;
+                text-align: center;
+                min-width: 70px;
+                white-space: nowrap;
+            }
+
+            .sidebar {
+                display: flex;
+                overflow-x: auto;
+                gap: 2px;
+                padding: 5px 0;
+                -webkit-overflow-scrolling: touch;
+                width: 100%;
+            }
+
+            /* 头部优化 */
+            header {
+                padding: 8px;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+
+            .mode-btn {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            /* 主内容区优化 */
+            main {
+                padding: 8px;
+                width: 100%;
+            }
+
+            .content {
+                padding: 0;
+                width: 100%;
+            }
+
+            /* 购物车控件优化 */
+            .quantity-control {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .quantity-btn {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                font-size: 14px;
+                min-width: 32px;
+                min-height: 32px;
+            }
+
+            .quantity-input {
+                width: 45px;
+                height: 32px;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            /* 小按钮优化 */
+            .small-btn {
+                min-height: 30px;
+                padding: 5px 10px;
+                font-size: 12px;
+                touch-action: manipulation;
+            }
+
+            /* 输入框优化 */
+            input, textarea, select {
+                font-size: 16px;
+            }
+
+            .form-group input, .form-group textarea {
+                padding: 10px;
+                font-size: 16px;
+                min-height: 40px;
+            }
+
+            /* 购物车项目优化 */
+            .cart-item {
+                padding: 10px;
+                margin-bottom: 10px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .cart-item-image {
+                width: 100%;
+                height: 100px;
+                border-radius: 8px;
+            }
+
+            .cart-item-info {
+                flex: 1;
+            }
+
+            .cart-item-controls {
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 8px;
+            }
+
+            /* 订单项目优化 */
+            .user-order-item, .order-item {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            /* 统计卡片优化 */
+            .stat-card {
+                padding: 12px;
+                margin-bottom: 8px;
+            }
+
+            .stat-value {
+                font-size: 20px;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+
+            /* 表格优化 */
+            .inventory-table {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                width: 100%;
+            }
+
+            .inventory-table table {
+                min-width: 500px;
+            }
+
+            /* 移除可能的边距和溢出 */
+            * {
+                box-sizing: border-box;
+            }
+
+            .main-content {
+                width: 100%;
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+        }
+
+        /* 超小屏幕优化 */
+        @media (max-width: 360px) {
+            .app-container {
+                padding: 1px;
+            }
+
+            .product-info {
+                padding: 6px;
+            }
+
+            .product-name {
+                font-size: 14px;
+            }
+
+            .product-description {
+                font-size: 11px;
+            }
+
+            .product-price {
+                font-size: 14px;
+            }
+
+            .add-to-cart {
+                font-size: 13px;
+                padding: 8px 10px;
+                min-height: 40px;
+            }
+
+            .flavor-option {
+                font-size: 12px;
+                padding: 6px;
+                min-height: 32px;
+            }
+
+            .nav-item {
+                font-size: 11px;
+                padding: 5px 6px;
+                min-height: 36px;
+                min-width: 60px;
+            }
+
+            header {
+                padding: 5px;
+            }
+
+            .logo {
+                font-size: 14px;
+            }
+
+            main {
+                padding: 5px;
+            }
+        }
+
+        /* 完整的移动端响应式设计 */
         @media (max-width: 768px) {
             .app-container {
                 padding: 5px;
@@ -1181,6 +1767,7 @@
                                 <div class="order-notes">
                                     <label>订单备注（选填）</label>
                                     <textarea id="orderNotes" placeholder="请输入订单备注，例如：特殊要求、送达时间等..."></textarea>
+                                    <div class="note-example">示例：请下午2点后送达，不要放糖</div>
                                 </div>
                                 
                                 <button class="submit-order-btn" onclick="app.submitOrder()">提交订单</button>
@@ -1268,19 +1855,22 @@
                         <!-- 系统设置页面 -->
                         <div id="settingsPage" class="page">
                             <h2>系统设置</h2>
-                            <div class="form-group">
-                                <label>店铺名称</label>
-                                <input type="text" value="九食堂面包店" placeholder="请输入店铺名称">
+                            <div class="settings-form">
+                                <h3>店铺信息</h3>
+                                <div class="form-group">
+                                    <label>店铺名称</label>
+                                    <input type="text" value="九食堂面包店" placeholder="请输入店铺名称">
+                                </div>
+                                <div class="form-group">
+                                    <label>营业时间</label>
+                                    <input type="text" value="08:00-22:00" placeholder="请输入营业时间">
+                                </div>
+                                <div class="form-group">
+                                    <label>联系电话</label>
+                                    <input type="tel" value="138-0000-0000" placeholder="请输入联系电话">
+                                </div>
+                                <button class="save-btn">保存设置</button>
                             </div>
-                            <div class="form-group">
-                                <label>营业时间</label>
-                                <input type="text" value="08:00-22:00" placeholder="请输入营业时间">
-                            </div>
-                            <div class="form-group">
-                                <label>联系电话</label>
-                                <input type="tel" value="138-0000-0000" placeholder="请输入联系电话">
-                            </div>
-                            <button class="save-btn">保存设置</button>
                         </div>
                     </div>
                 </div>
@@ -1291,8 +1881,13 @@
     <script>
         // 应用状态管理
         const app = {
+            // 购物车数据
             cart: [],
+            
+            // 用户订单数据
             userOrders: [],
+            
+            // 商品数据（添加图片、备注字段和口味选择）
             products: [
             { id: 1, name: '贝果', description: '圆环形面包，口感Q弹，有嚼劲', price: 5, emoji: '🥯', category: 'classic', stock: 30, 
               image: 'https://imgs.699pic.com/images/600/383/566.jpg!list1x.v2',
@@ -1344,6 +1939,7 @@
               ] }
         ],
 
+            // 初始化应用
             init() {
                 this.loadProductsFromStorage();
                 this.renderProducts();
@@ -1351,6 +1947,7 @@
                 this.loadOrdersFromStorage();
             },
 
+            // 渲染商品列表
             renderProducts() {
                 const productGrid = document.getElementById('productGrid');
                 productGrid.innerHTML = '';
@@ -1359,6 +1956,7 @@
                     const productCard = document.createElement('div');
                     productCard.className = 'product-card';
                     
+                    // 生成口味选项HTML
                     const flavorsHTML = product.flavors ? product.flavors.map((flavor, index) => `
                         <div class="flavor-option ${index === 0 ? 'selected' : ''}" 
                              data-product-id="${product.id}" 
@@ -1402,6 +2000,7 @@
                 });
             },
 
+            // 切换到用户端
             switchMode(mode) {
                 const userMode = document.getElementById('userMode');
                 const merchantMode = document.getElementById('merchantMode');
@@ -1413,6 +2012,7 @@
                     userBtns[0].classList.add('active');
                     userBtns[1].classList.remove('active');
                     
+                    // 用户端：激活第一个导航项（商品列表）
                     const userNavItems = userMode.querySelectorAll('.nav-item');
                     const userPages = userMode.querySelectorAll('.page');
                     userNavItems.forEach(item => item.classList.remove('active'));
@@ -1430,6 +2030,7 @@
                     userBtns[0].classList.remove('active');
                     userBtns[1].classList.add('active');
                     
+                    // 商家端：激活第一个导航项（数据统计）
                     const merchantNavItems = merchantMode.querySelectorAll('.nav-item');
                     const merchantPages = merchantMode.querySelectorAll('.page');
                     merchantNavItems.forEach(item => item.classList.remove('active'));
@@ -1442,10 +2043,12 @@
                         merchantPages[0].classList.add('active');
                     }
                     
+                    // 切换到商家端时初始化商家数据
                     this.initMerchantData();
                 }
             },
 
+            // 显示页面
             showPage(page) {
                 const pages = document.querySelectorAll('.page');
                 const navItems = document.querySelectorAll('.nav-item');
@@ -1456,6 +2059,7 @@
                 document.getElementById(page + 'Page').classList.add('active');
                 event.target.classList.add('active');
 
+                // 根据页面类型渲染相应内容
                 if (page === 'cart') {
                     this.renderCart();
                 } else if (page === 'orders') {
@@ -1463,18 +2067,22 @@
                 }
             },
 
+            // 选择口味
             selectFlavor(productId, flavorId) {
                 const product = this.products.find(p => p.id === productId);
                 if (!product || !product.flavors) return;
 
+                // 移除所有口味选项的选中状态
                 const flavorOptions = document.querySelectorAll(`.flavor-option[data-product-id="${productId}"]`);
                 flavorOptions.forEach(option => option.classList.remove('selected'));
 
+                // 添加选中状态到当前选项
                 const selectedOption = document.querySelector(`.flavor-option[data-product-id="${productId}"][data-flavor-id="${flavorId}"]`);
                 if (selectedOption) {
                     selectedOption.classList.add('selected');
                 }
 
+                // 更新价格显示
                 const selectedFlavor = product.flavors.find(f => f.id === flavorId);
                 if (selectedFlavor) {
                     const priceElement = document.getElementById(`price-${productId}`);
@@ -1484,17 +2092,19 @@
                 }
             },
 
+            // 获取当前选中的口味
             getSelectedFlavor(productId) {
                 const product = this.products.find(p => p.id === productId);
                 if (!product || !product.flavors) return null;
 
                 const selectedOption = document.querySelector(`.flavor-option.selected[data-product-id="${productId}"]`);
-                if (!selectedOption) return product.flavors[0];
+                if (!selectedOption) return product.flavors[0]; // 默认第一个口味
 
                 const flavorId = parseInt(selectedOption.getAttribute('data-flavor-id'));
                 return product.flavors.find(f => f.id === flavorId) || product.flavors[0];
             },
 
+            // 添加到购物车
             addToCart(productId) {
                 const product = this.products.find(p => p.id === productId);
                 if (product && product.stock > 0) {
@@ -1502,11 +2112,13 @@
                     const flavorName = selectedFlavor ? selectedFlavor.name : product.name;
                     const price = selectedFlavor ? selectedFlavor.price : product.price;
                     
+                    // 查找购物车中是否已有相同商品和口味
                     const existingItem = this.cart.find(item => 
                         item.productId === productId && 
                         item.flavorId === (selectedFlavor ? selectedFlavor.id : null)
                     );
                     
+                    // 检查库存是否足够
                     const currentQuantity = existingItem ? existingItem.quantity + 1 : 1;
                     if (product.stock < currentQuantity) {
                         alert(`商品 ${product.name} 库存不足！当前库存：${product.stock}`);
@@ -1514,8 +2126,10 @@
                     }
                     
                     if (existingItem) {
+                        // 如果已存在，增加数量
                         existingItem.quantity += 1;
                     } else {
+                        // 如果不存在，添加新商品
                         this.cart.push({
                             id: Date.now(),
                             productId: productId,
@@ -1535,11 +2149,12 @@
                 }
             },
 
+            // 提交订单（已更新，包含备注功能）
             submitOrder() {
                 const name = document.getElementById('profileName').value;
                 const phone = document.getElementById('profilePhone').value;
                 const address = document.getElementById('profileAddress').value;
-                const notes = document.getElementById('orderNotes').value;
+                const notes = document.getElementById('orderNotes').value; // 获取备注内容
 
                 if (!name || !phone || !address) {
                     alert('请填写完整的收货信息！');
@@ -1551,6 +2166,7 @@
                     return;
                 }
 
+                // 检查库存是否足够
                 for (const item of this.cart) {
                     const product = this.products.find(p => p.id === item.productId);
                     if (!product || product.stock < item.quantity) {
@@ -1559,6 +2175,7 @@
                     }
                 }
 
+                // 减少商品库存
                 for (const item of this.cart) {
                     const product = this.products.find(p => p.id === item.productId);
                     if (product) {
@@ -1566,12 +2183,13 @@
                     }
                 }
 
+                // 创建新订单，包含备注信息
                 const order = {
                     id: Date.now(),
                     customer: name,
                     phone: phone,
                     address: address,
-                    notes: notes,
+                    notes: notes, // 保存备注信息
                     items: [...this.cart],
                     total: this.calculateCartTotal(),
                     status: 'pending',
@@ -1583,18 +2201,22 @@
                 this.updateCartDisplay();
                 this.saveCartToStorage();
                 this.saveOrdersToStorage();
-                this.saveProductsToStorage();
+                this.saveProductsToStorage(); // 保存更新后的库存数据
 
+                // 重新渲染商品列表和库存表格
                 this.renderProducts();
                 this.renderInventoryTable();
 
+                // 清空备注框
                 document.getElementById('orderNotes').value = '';
 
                 alert('订单提交成功！请等待商家联系您。' + (notes ? `\n您的备注：${notes}` : ''));
                 
+                // 更新商家端数据统计
                 this.updateDashboardStats();
             },
 
+            // 购物车相关功能
             updateCartDisplay() {
                 const cartCount = document.getElementById('cartCount');
                 const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -1605,18 +2227,22 @@
                 return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
             },
 
+            // 渲染购物车
             renderCart() {
+                console.log('renderCart called, cart items:', this.cart.length);
                 const cartContainer = document.getElementById('cartContainer');
                 const cartTotal = document.getElementById('cartTotal');
                 const emptyCart = document.getElementById('emptyCart');
 
                 if (this.cart.length === 0) {
+                    console.log('Cart is empty, showing empty message');
                     if (cartContainer) cartContainer.style.display = 'none';
                     if (cartTotal) cartTotal.style.display = 'none';
                     if (emptyCart) emptyCart.style.display = 'block';
                     return;
                 }
 
+                console.log('Cart has items, rendering cart');
                 if (cartContainer) cartContainer.style.display = 'block';
                 if (cartTotal) cartTotal.style.display = 'block';
                 if (emptyCart) emptyCart.style.display = 'none';
@@ -1652,11 +2278,13 @@
                 }
             },
 
+            // 更新商品数量
             updateQuantity(itemId, change) {
                 const item = this.cart.find(item => item.id === itemId);
                 if (item) {
                     const newQuantity = item.quantity + change;
                     
+                    // 检查库存是否足够
                     const product = this.products.find(p => p.id === item.productId);
                     if (product && newQuantity > product.stock) {
                         alert(`商品 ${item.productName} 库存不足！当前库存：${product.stock}`);
@@ -1674,14 +2302,17 @@
                 }
             },
 
+            // 设置商品数量
             setQuantity(itemId, quantity) {
                 const item = this.cart.find(item => item.id === itemId);
                 if (item) {
                     quantity = parseInt(quantity);
                     if (quantity > 0) {
+                        // 检查库存是否足够
                         const product = this.products.find(p => p.id === item.productId);
                         if (product && quantity > product.stock) {
                             alert(`商品 ${item.productName} 库存不足！当前库存：${product.stock}`);
+                            // 恢复原数量
                             document.querySelector(`input[value="${item.quantity}"]`).value = item.quantity;
                             return;
                         }
@@ -1694,6 +2325,7 @@
                 }
             },
 
+            // 从购物车移除商品
             removeFromCart(itemId) {
                 this.cart = this.cart.filter(item => item.id !== itemId);
                 this.updateCartDisplay();
@@ -1701,6 +2333,7 @@
                 this.renderCart();
             },
 
+            // 渲染用户订单（已更新，显示备注信息）
             renderUserOrders() {
                 const ordersContainer = document.getElementById('ordersContainer');
                 const emptyOrders = document.getElementById('emptyOrders');
@@ -1720,16 +2353,18 @@
                         const orderItem = document.createElement('div');
                         orderItem.className = 'user-order-item';
                         
+                        // 生成订单项目HTML，包含备注信息
                         let itemsHTML = '';
                         order.items.forEach(item => {
                             itemsHTML += `
-                                <div style="padding: 8px 0; border-bottom: 1px solid #f5f5f5;">
-                                    <div>${item.emoji} ${item.productName} - ${item.flavorName}</div>
-                                    <div style="font-size: 12px; color: #666;">¥${item.price} × ${item.quantity}</div>
+                                <div class="user-order-item-detail">
+                                    <div class="user-order-item-name">${item.emoji} ${item.productName} - ${item.flavorName}</div>
+                                    <div class="user-order-item-price">¥${item.price} × ${item.quantity}</div>
                                 </div>
                             `;
                         });
                         
+                        // 如果有备注，显示备注信息
                         const notesHTML = order.notes ? `
                             <div style="margin-top: 10px; padding: 10px; background: rgba(255, 107, 107, 0.05); border-radius: 6px; border-left: 3px solid var(--primary-color);">
                                 <strong>订单备注：</strong>${order.notes}
@@ -1737,21 +2372,21 @@
                         ` : '';
 
                         orderItem.innerHTML = `
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
-                                <div style="font-size: 16px; font-weight: 600; color: var(--text-dark);">订单号：${order.id}</div>
-                                <div style="padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: 500; background: rgba(255, 217, 61, 0.2); color: #FFB347; border: 1px solid #FFB347;">
+                            <div class="user-order-header">
+                                <div class="user-order-number">订单号：${order.id}</div>
+                                <div class="user-order-status ${order.status}">
                                     ${order.status === 'pending' ? '待处理' : 
                                       order.status === 'processing' ? '处理中' : 
                                       order.status === 'completed' ? '已完成' : '未知状态'}
                                 </div>
                             </div>
-                            <div style="margin-bottom: 15px;">
+                            <div class="user-order-items">
                                 ${itemsHTML}
                             </div>
                             ${notesHTML}
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-                                <div style="font-size: 18px; font-weight: bold; color: var(--primary-color);">总计：¥${order.total}</div>
-                                <div style="font-size: 12px; color: var(--text-light);">下单时间：${order.time}</div>
+                            <div class="user-order-footer">
+                                <div class="user-order-total">总计：¥${order.total}</div>
+                                <div class="user-order-time">下单时间：${order.time}</div>
                             </div>
                         `;
                         ordersContainer.appendChild(orderItem);
@@ -1759,6 +2394,7 @@
                 }
             },
 
+            // 商家端功能（保持不变）
             showMerchantPage(page, event) {
                 const pages = document.querySelectorAll('.page');
                 const navItems = document.querySelectorAll('.nav-item');
@@ -1766,6 +2402,7 @@
                 pages.forEach(p => p.classList.remove('active'));
                 navItems.forEach(item => item.classList.remove('active'));
 
+                // 处理订单管理页面的特殊ID
                 const pageId = page === 'orders' ? 'merchantOrdersPage' : page + 'Page';
                 document.getElementById(pageId).classList.add('active');
                 event.target.classList.add('active');
@@ -1801,8 +2438,6 @@
 
             renderInventoryTable() {
                 const table = document.getElementById('inventoryTable');
-                if (!table) return;
-                
                 table.innerHTML = '';
                 
                 this.products.forEach(product => {
@@ -1822,8 +2457,6 @@
 
             renderMerchantOrders() {
                 const ordersList = document.getElementById('merchantOrdersList');
-                if (!ordersList) return;
-                
                 ordersList.innerHTML = '';
                 
                 this.userOrders.forEach(order => {
@@ -1835,6 +2468,7 @@
                         itemsHTML += `${item.emoji} ${item.productName} - ${item.flavorName} × ${item.quantity}<br>`;
                     });
                     
+                    // 商家端显示备注信息
                     const notesHTML = order.notes ? `
                         <div style="margin-top: 5px; font-size: 12px; color: #666;">
                             <strong>备注：</strong>${order.notes}
@@ -1842,16 +2476,16 @@
                     ` : '';
 
                     orderItem.innerHTML = `
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-weight: 600;">
+                        <div class="order-header">
                             <div>订单号：${order.id}</div>
-                            <div style="padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 500; background: rgba(255, 217, 61, 0.2); color: #FFB347; border: 1px solid #FFB347;">
+                            <div class="order-status ${order.status}">
                                 ${order.status === 'pending' ? '待处理' : 
                                   order.status === 'accepted' ? '已接单' : 
                                   order.status === 'delivering' ? '配送中' : 
                                   order.status === 'completed' ? '已完成' : '未知状态'}
                             </div>
                         </div>
-                        <div style="display: flex; gap: 20px; font-size: 14px; color: var(--text-light); margin-bottom: 10px;">
+                        <div class="order-details">
                             <div><strong>客户：</strong>${order.customer}</div>
                             <div><strong>电话：</strong>${order.phone}</div>
                             <div><strong>地址：</strong>${order.address}</div>
@@ -1860,7 +2494,7 @@
                             <strong>商品：</strong><br>${itemsHTML}
                         </div>
                         ${notesHTML}
-                        <div style="display: flex; gap: 10px;">
+                        <div class="order-actions">
                             <button class="small-btn" onclick="app.updateOrderStatus(${order.id}, 'accepted')">接单</button>
                             <button class="small-btn" onclick="app.updateOrderStatus(${order.id}, 'delivering')">配送</button>
                             <button class="small-btn" onclick="app.updateOrderStatus(${order.id}, 'completed')">完成</button>
@@ -1879,6 +2513,7 @@
                     this.renderMerchantOrders();
                     this.updateDashboardStats();
                     
+                    // 如果用户端当前正在查看订单页面，也更新显示
                     if (document.getElementById('ordersPage').classList.contains('active')) {
                         this.renderUserOrders();
                     }
@@ -1894,8 +2529,204 @@
                 }
             },
 
+            addNewProduct() {
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.5);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1000;
+                `;
+                
+                modal.innerHTML = `
+                    <div style="background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <h3 style="margin-bottom: 20px; color: var(--text-dark);">添加新商品</h3>
+                        <div class="form-group">
+                            <label>商品名称</label>
+                            <input type="text" id="newProductName" placeholder="请输入商品名称" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>价格</label>
+                            <input type="number" id="newProductPrice" placeholder="请输入价格" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>库存数量</label>
+                            <input type="number" id="newProductStock" placeholder="请输入库存数量" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>商品描述</label>
+                            <textarea id="newProductDescription" placeholder="请输入商品描述" class="form-input" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>商品图标（Emoji）</label>
+                            <input type="text" id="newProductEmoji" placeholder="例如：🥐" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>商品图片URL</label>
+                            <input type="text" id="newProductImage" placeholder="请输入图片链接（可选）" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>商品备注</label>
+                            <textarea id="newProductNotes" placeholder="请输入商品备注（可选）" class="form-input" rows="2"></textarea>
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                            <button class="save-btn" onclick="app.saveNewProduct()" style="flex: 1;">保存</button>
+                            <button class="small-btn" onclick="app.closeEditModal()" style="flex: 1;">取消</button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+            },
+            
+            saveNewProduct() {
+                const name = document.getElementById('newProductName').value;
+                const price = parseFloat(document.getElementById('newProductPrice').value);
+                const stock = parseInt(document.getElementById('newProductStock').value);
+                const description = document.getElementById('newProductDescription').value;
+                const emoji = document.getElementById('newProductEmoji').value || '🍞';
+                const image = document.getElementById('newProductImage').value || 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop&crop=center';
+                const notes = document.getElementById('newProductNotes').value || '新品上市，欢迎品尝！';
+                
+                if (!name || !price || !stock || !description) {
+                    alert('请填写完整的商品信息！');
+                    return;
+                }
+                
+                // 生成新的商品ID
+                const newId = Math.max(...this.products.map(p => p.id)) + 1;
+                
+                // 添加新商品到商品列表
+                this.products.push({
+                    id: newId,
+                    name: name,
+                    description: description,
+                    price: price,
+                    emoji: emoji,
+                    category: 'new',
+                    stock: stock,
+                    image: image,
+                    notes: notes,
+                    flavors: [
+                        { id: 1, name: name + '（原味）', price: price, description: '经典原味' }
+                    ]
+                });
+                
+                // 重新渲染商品列表和库存表格
+                this.renderProducts();
+                this.renderInventoryTable();
+                this.closeAddProductModal();
+                
+                alert('商品添加成功！');
+            },
+
             editProduct(productId) {
-                alert('编辑功能需要完整的模态框代码，这里简化处理');
+                const product = this.products.find(p => p.id === productId);
+                if (!product) return;
+                
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.5);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1000;
+                `;
+                
+                modal.innerHTML = `
+                    <div style="background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <h3 style="margin-bottom: 20px; color: var(--text-dark);">编辑商品</h3>
+                        <div class="form-group">
+                            <label>商品名称</label>
+                            <input type="text" id="editProductName" value="${product.name}" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>价格</label>
+                            <input type="number" id="editProductPrice" value="${product.price}" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>库存数量</label>
+                            <input type="number" id="editProductStock" value="${product.stock}" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>商品描述</label>
+                            <textarea id="editProductDescription" class="form-input" rows="3">${product.description}</textarea>
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                            <button class="save-btn" onclick="app.saveProductEdit(${productId})" style="flex: 1;">保存</button>
+                            <button class="small-btn" onclick="app.closeEditModal()" style="flex: 1;">取消</button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+            },
+            
+            saveProductEdit(productId) {
+                const product = this.products.find(p => p.id === productId);
+                if (!product) return;
+                
+                const name = document.getElementById('editProductName').value;
+                const price = parseFloat(document.getElementById('editProductPrice').value);
+                const stock = parseInt(document.getElementById('editProductStock').value);
+                const description = document.getElementById('editProductDescription').value;
+                
+                if (!name || !price || !stock) {
+                    alert('请填写完整信息！');
+                    return;
+                }
+                
+                product.name = name;
+                product.price = price;
+                product.stock = stock;
+                product.description = description;
+                
+                this.renderProducts();
+                this.renderInventoryTable();
+                this.closeEditModal();
+                
+                alert('商品信息已更新！');
+            },
+            
+            closeEditModal() {
+                // 精确查找所有模态框并移除
+                const modals = document.querySelectorAll('div');
+                for (let modal of modals) {
+                    if (modal.style && 
+                        modal.style.position === 'fixed' && 
+                        modal.style.top === '0px' && 
+                        modal.style.left === '0px' &&
+                        modal.style.width === '100%' &&
+                        modal.style.height === '100%' &&
+                        modal.style.backgroundColor === 'rgba(0, 0, 0, 0.5)') {
+                        modal.remove();
+                        break;
+                    }
+                }
+            },
+            
+            closeAddProductModal() {
+                // 专门用于关闭添加新商品模态框
+                const modals = document.querySelectorAll('div');
+                for (let modal of modals) {
+                    if (modal.innerHTML && 
+                        (modal.innerHTML.includes('添加新商品') || 
+                         modal.innerHTML.includes('编辑商品'))) {
+                        modal.remove();
+                        break;
+                    }
+                }
             },
 
             deleteProduct(productId) {
@@ -1906,15 +2737,15 @@
                 }
             },
 
-            addNewProduct() {
-                alert('添加商品功能需要完整的模态框代码，这里简化处理');
-            },
-
+            // 结算功能
             checkout() {
+                // 切换到个人中心页面进行订单提交
                 this.showPage('profile');
+                // 滚动到顶部
                 window.scrollTo(0, 0);
             },
 
+            // 本地存储相关
             saveCartToStorage() {
                 localStorage.setItem('breadShopCart', JSON.stringify(this.cart));
             },
@@ -1938,6 +2769,7 @@
                 }
             },
 
+            // 库存数据持久化
             saveProductsToStorage() {
                 localStorage.setItem('breadShopProducts', JSON.stringify(this.products));
             },
